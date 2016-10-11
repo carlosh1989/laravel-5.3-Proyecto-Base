@@ -163,7 +163,6 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
         UxWeb\SweetAlert\SweetAlertServiceProvider::class,
-
         /*
          * Package Service Providers...
          */

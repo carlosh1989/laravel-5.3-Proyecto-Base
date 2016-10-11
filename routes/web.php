@@ -12,9 +12,10 @@
 */
 
 
+
 Route::group(['middlewareGroups' => 'web'], function () {
 
-    Route::auth();
+	Route::auth();
     Route::get('/salir', 'HomeController@salir');
     Route::get('/', 'HomeController@index');
     Route::get('/home', 'HomeController@index');
@@ -79,3 +80,7 @@ Route::group(['middlewareGroups' => 'web'], function () {
         Route::delete('/admin/brand/{id}', 'AdminController@destroyBrand');
     });
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');

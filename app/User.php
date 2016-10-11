@@ -2,28 +2,49 @@
 
 namespace App;
 
-use Illuminate\Notifications\Notifiable;
-use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
+use Illuminate\Auth\Authenticatable;
 
-class User extends Authenticatable
+class User extends Model implements AuthenticatableContract
 {
-    use Notifiable;
+
+    use Authenticatable;
+
+    
 
     /**
-     * The attributes that are mass assignable.
+     * The database table used by the model.
+     *
+     * @var string
+     */
+    protected $table = 'users';
+
+    /**
+     * Attributes that should be mass-assignable.
      *
      * @var array
      */
-    protected $fillable = [
-        'name', 'email', 'password',
-    ];
+    protected $fillable = ['name', 'email', 'password', 'role', 'remember_token'];
 
     /**
-     * The attributes that should be hidden for arrays.
+     * The attributes excluded from the model's JSON form.
      *
      * @var array
      */
-    protected $hidden = [
-        'password', 'remember_token',
-    ];
+    protected $hidden = [];
+
+    /**
+     * The attributes that should be casted to native types.
+     *
+     * @var array
+     */
+    protected $casts = [];
+
+    /**
+     * The attributes that should be mutated to dates.
+     *
+     * @var array
+     */
+    protected $dates = [];
 }
