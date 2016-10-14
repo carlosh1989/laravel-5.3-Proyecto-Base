@@ -12,15 +12,14 @@
 
     <!-- Styles -->
     <link href="/css/app.css" rel="stylesheet">
-<link rel="stylesheet" href="{{asset('/bower/materialize/dist/css/materialize.css')}}"> 
+<link rel="stylesheet" href="{{asset('/bower/materialize/dist/css/materialize.min.css')}}"> 
       <link rel="stylesheet" href="{{asset('/bower/sweetalert/dist/sweetalert.css')}}">     
    <link rel="stylesheet" href="{{asset('bower/components-font-awesome/css/font-awesome.min.css')}}">
         <title>ReCarLine</title>
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
          <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <script src="{{asset('bower/webcomponentsjs/webcomponents-lite.js')}}"></script>
-        <script src="{{asset('bower/sweetalert/dist/sweetalert.min.js')}}"></script>
+
     <!-- Scripts -->
     <script>
         window.Laravel = <?php echo json_encode([
@@ -29,6 +28,9 @@
     </script>
 </head>
 <body>
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="{{asset('bower/sweetalert/dist/sweetalert.min.js')}}"></script>
+<script src="{{asset('bower/materialize/dist/js/materialize.min.js')}}"></script>
     <div id="app">
        
 <!-- Dropdown Structure -->
@@ -37,7 +39,7 @@
 </ul>
 <nav>
   <div class="nav-wrapper blue">
-    <a href="{{ url('/')}}" class="brand-logo">Home</a>
+    <a href="{{ url('/')}}" class="brand-logo">{{ucfirst(Auth::user()->role)}}</a>
     <ul class="right hide-on-med-and-down">
          @if (Auth::guest())
             <li><a href="{{ url('/login') }}">Login</a></li>
@@ -50,6 +52,7 @@
     </ul>
   </div>
 </nav>
+
 
         @yield('content')
  @include('sweet::alert')

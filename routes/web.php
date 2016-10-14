@@ -15,7 +15,7 @@
 
 Route::group(['middlewareGroups' => 'web'], function () {
 
-	Route::auth();
+    Route::auth();
     Route::get('/salir', 'HomeController@salir');
     Route::get('/', 'HomeController@index');
     Route::get('/home', 'HomeController@index');
@@ -57,27 +57,9 @@ Route::group(['middlewareGroups' => 'web'], function () {
     });
 
     Route::group(['middleware' => ['auth', 'role:admin']], function () {
-        
         // Rutas de REPUESTOS
-        Route::get('/admin', 'AdminController@index');
-        Route::get('/admin/parts', 'AdminController@index');
-        Route::get('/admin/parts/category/{id}', 'AdminController@partsCategory');
-        Route::get('/admin/part/create', 'AdminController@createPart');
-        Route::post('/admin/part', 'AdminController@storePart');
-        Route::get('/qr', 'AdminController@qr');
-
-        // Rutas de CATEGORIAS
-        Route::post('/admin/categories', 'AdminController@index');
-        //
-        Route::get('/admin/category', 'AdminController@listCategory');
-        Route::get('/admin/categoryList', 'AdminController@indexCategory');
-        Route::post('/admin/category', 'AdminController@storeCategory');
-        Route::delete('/admin/category/{id}', 'AdminController@destroyCategory');
-        //RUTAS de MARCAS
-        Route::get('/admin/brand', 'AdminController@listBrand');
-        Route::get('/admin/brandList', 'AdminController@indexBrand');
-        Route::post('/admin/brand', 'AdminController@storeBrand');
-        Route::delete('/admin/brand/{id}', 'AdminController@destroyBrand');
+        Route::get('/admin', 'AdminController@home');
+        Route::get('/admin/home', 'AdminController@home');
     });
 });
 

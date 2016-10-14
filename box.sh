@@ -15,7 +15,7 @@ if [[ $1 ]] || [[ $2 ]] || [[ $3 ]]; then
 				for i in {0..75} {75..0} ; do echo -en "\e[38;5;256m-\e[0m" ; done ; echo
 				echo -e '\E[37;44m'"\033[5m Controllador "$1" creado. \033[0m"  
 		    	php artisan make:view $1.$2.$3 -e layouts.$1
-		    	php artisan make:controller ${1^}
+		    	php artisan make:controller ${1^}Controller
 		    	echo ${1^}
 		    	for i in {0..75} {75..0} ; do echo -en "\e[38;5;256m-\e[0m" ; done ; echo
 				echo ""
